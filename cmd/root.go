@@ -31,8 +31,8 @@ func newRootCmd() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "tempura",
-		Short: "tempura is a generator that fills in templates.",
-		Long:  `A Fast and Flexible Template Fill Generator built with love by korosuke613 in Go.`,
+		Short: "tempura is a Tool that fills in templates.",
+		Long:  `A Fast and Flexible Template Fill Tool built with love by korosuke613 in Go.`,
 		RunE: func(_ *cobra.Command, args []string) error {
 			if showVersion {
 				printVersion()
