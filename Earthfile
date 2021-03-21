@@ -29,16 +29,19 @@ build:
 goreleaser-setup:
     FROM +deps
     RUN curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh | sh
+    RUN mv ./bin/goreleaser /usr/local/bin/goreleaser
     COPY . /work
+    RUN git reset --hard HEAD
+
 
 release-dryrun:
     FROM +goreleaser-setup
-    RUN ./bin/goreleaser --snapshot --skip-publish --rm-dist
+    RUN goreleaser --snapshot --skip-publish --rm-dist
     SAVE ARTIFACT dist AS LOCAL build/dist
 
 release:
     FROM +goreleaser-setup
-    RUN --push --secret GITHUB_TOKEN=+secrets/GITHUB_TOKEN ./bin/goreleaser release
+    RUN --push --secret GITHUB_TOKEN=+secrets/GITHUB_TOKEN goreleaser release
 
 docker:
     FROM gcr.io/distroless/base
