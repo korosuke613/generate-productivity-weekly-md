@@ -55,19 +55,31 @@ func newRootCmd() *cobra.Command {
 			if err := t.Fill(&output); err != nil {
 				return err
 			}
-			fmt.Println(output)
 
+			if outputFilePath != "" {
+				file, err := os.Create(outputFilePath)
+				if err != nil {
+					return err
+				}
+				defer file.Close()
+
+				_, err = file.WriteString(output)
+				if err != nil {
+					return err
+				}
+			} else {
+				fmt.Println(output)
+			}
 			return nil
 		},
 	}
 	cmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "show version")
 	cmd.PersistentFlags().StringVarP(&inputFilePath, "input-filepath", "i", "input.json", "input file name")
 	cmd.PersistentFlags().StringVarP(&templateFilePath, "template-filepath", "t", "template.txt", "template file name")
-	cmd.PersistentFlags().StringVarP(&outputFilePath, "output", "o", "output.txt", "output file name")
+	cmd.PersistentFlags().StringVarP(&outputFilePath, "output", "o", "", "output file name")
 	cmd.PersistentFlags().StringVar(&inputString, "input-string", "", "input string")
 	cmd.PersistentFlags().StringVar(&templateString, "template-string", "", "template string")
 
-	cmd.SetVersionTemplate(fmt.Sprintf("version: %s, commit: %s, date: %s\n", version, commit, date))
 	return cmd
 }
 

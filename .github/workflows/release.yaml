@@ -47,5 +47,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_PAT }}
-      - run: docker tag tempura:latest ghcr.io/korosuke613/tempura:${GITHUB_REF##*/}
-      - run: docker push ghcr.io/korosuke613/tempura:${GITHUB_REF##*/}
+      - name: docker tag
+        run: |
+          docker tag tempura:latest ghcr.io/korosuke613/tempura:${GITHUB_REF##*/}
+          docker tag tempura:latest ghcr.io/korosuke613/tempura:latest
+      - name: docker push
+        run: |
+          docker push ghcr.io/korosuke613/tempura:latest
+          docker push ghcr.io/korosuke613/tempura:${GITHUB_REF##*/}
