@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/korosuke613/tempura/src/cmd"
+	"github.com/korosuke613/tempura/cmd"
 )
 
 func main() {
