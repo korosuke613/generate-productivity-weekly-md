@@ -48,5 +48,4 @@ docker:
 
     COPY +build/tempura /tempura
     ENTRYPOINT ["/tempura"]
-    SAVE IMAGE go-tempura:latest
-
+    SAVE IMAGE tempura:latest
