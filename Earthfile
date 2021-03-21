@@ -2,9 +2,12 @@
 
 FROM golang:1.16
 WORKDIR /work
+ENV GO111MODULE=on
 
 src:
-    COPY ./src /work/src
+    COPY ./cmd ./cmd
+    COPY ./lib ./lib
+    COPY ./main.go ./
     COPY go.mod go.sum ./
 
 deps:
@@ -23,7 +26,7 @@ lint:
 build:
     FROM +deps
 
-    RUN go build -o build/tempura ./src/main.go
+    RUN go build -o build/tempura ./main.go
     SAVE ARTIFACT build/tempura /tempura AS LOCAL build/tempura
 
 goreleaser-setup:

@@ -9,7 +9,7 @@
 builds:
   - env:
       - CGO_ENABLED=0
-    main: ./src/main.go
+    main: ./main.go
     goos:
       - linux
       - windows

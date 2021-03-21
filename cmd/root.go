@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/korosuke613/tempura/src/lib"
+	"github.com/korosuke613/tempura/lib"
 	"github.com/spf13/cobra"
 	"os"
 )
