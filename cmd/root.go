@@ -5,12 +5,11 @@ import (
 	"github.com/korosuke613/tempura/lib"
 	"github.com/spf13/cobra"
 	"os"
+	"runtime/debug"
 )
 
 var (
-	version          = "dev"
-	commit           = "none"
-	date             = "unknown"
+	version          string
 	inputFilePath    string
 	templateFilePath string
 	outputFilePath   string
@@ -84,5 +83,16 @@ func newRootCmd() *cobra.Command {
 }
 
 func printVersion() {
-	fmt.Printf("version: %s, commit: %s, date: %s\n", version, commit, date)
+	trueVersion := version
+
+	if version == "" {
+		info, ok := debug.ReadBuildInfo()
+		if ok {
+			trueVersion = info.Main.Version
+		}else{
+			trueVersion = "(devel)"
+		}
+	}
+
+	fmt.Printf("tempura version: %s\n", trueVersion)
 }

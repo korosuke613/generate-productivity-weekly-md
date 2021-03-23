@@ -26,7 +26,12 @@ lint:
 build:
     FROM +deps
 
-    RUN go build -o build/tempura ./main.go
+    COPY .git ./.git
+    RUN export VERSION=$(git tag | tail -1) \
+     && go build -o build/tempura \
+        -ldflags "-s -w -X \"github.com/korosuke613/tempura/cmd.version=$VERSION\" " \
+        ./main.go
+    RUN ./build/tempura -v
     SAVE ARTIFACT build/tempura /tempura AS LOCAL build/tempura
 
 goreleaser-setup:
