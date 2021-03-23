@@ -1,7 +1,4 @@
 build/
 dist/
 
-input.json
-template.txt
-output.txt
 main

@@ -74,7 +74,7 @@ func newRootCmd() *cobra.Command {
 	}
 	cmd.PersistentFlags().BoolVarP(&showVersion, "version", "v", false, "show version")
 	cmd.PersistentFlags().StringVarP(&inputFilePath, "input-filepath", "i", "input.json", "input file name")
-	cmd.PersistentFlags().StringVarP(&templateFilePath, "template-filepath", "t", "template.txt", "template file name")
+	cmd.PersistentFlags().StringVarP(&templateFilePath, "template-filepath", "t", "template.tmpl", "template file name")
 	cmd.PersistentFlags().StringVarP(&outputFilePath, "output", "o", "", "output file name")
 	cmd.PersistentFlags().StringVar(&inputString, "input-string", "", "input string")
 	cmd.PersistentFlags().StringVar(&templateString, "template-string", "", "template string")

@@ -60,15 +60,15 @@ Good
 }
 ```
 
-`template.txt`
-```text
+`template.tmpl`
+```gotemplate
 Hello {{.Name}},
 {{.Message}}
 ```
 
 #### output
 ```
-❯ tempura -i input.json -t template.txt
+❯ tempura -i input.json -t template.tmpl
 Hello John,
 Good
 ```
@@ -93,8 +93,8 @@ https://golang.org/pkg/text/template/#hdr-Actions
 }
 ```
 
-`template.txt`
-```
+`template.tmpl`
+```gotemplate
 {{if .isTrue}}isTrue is True!{{end}}
 
 {{if .isFalse}}never{{else}}isFalse is False!{{end}}
@@ -125,7 +125,7 @@ Flags:
   -i, --input-filepath string      input file name (default "input.json")
       --input-string string        input string
   -o, --output string              output file name
-  -t, --template-filepath string   template file name (default "template.txt")
+  -t, --template-filepath string   template file name (default "template.tmpl")
       --template-string string     template string
   -v, --version                    show version
 ```
