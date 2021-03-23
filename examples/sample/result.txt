@@ -1,0 +1,16 @@
+and: 0 0 0 1
+or: 0 1 1 1
+
+not: false true
+
+html: &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;
+js: \u003Cscript\u003Ealert(\'XSS\');\u003C/script\u003E
+urlquery: http%3A%2F%2Fexample.com%2Fpath%3Fkey%3Dval
+slice: ola
+
+eq: true    false    false
+ne: false    true    true
+lt: false    true    false
+le: true    true    false
+gt: false    false    true
+ge: true    false    true

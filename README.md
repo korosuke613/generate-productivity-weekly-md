@@ -2,6 +2,11 @@
 A Fast and Flexible Template Fill Tool.
 
 [![](https://img.shields.io/badge/docker-ghcr.io%2Fkorosuke613%2Ftempura-blue)](https://github.com/users/korosuke613/packages/container/package/tempura) [![](https://img.shields.io/github/v/release/korosuke613/tempura)](https://github.com/korosuke613/tempura/releases) ![](https://img.shields.io/github/go-mod/go-version/korosuke613/tempura) 
+
+Enter the following information to output the text that fills the template.
+- a template written in the format [text/template](https://golang.org/pkg/text/template)
+- variables by JSON
+
 ## Install
 
 ### go install
@@ -46,7 +51,7 @@ Good
 ```
 
 ### read template and inputs
-
+#### input
 `input.json`
 ```json
 {
@@ -61,6 +66,7 @@ Hello {{.Name}},
 {{.Message}}
 ```
 
+#### output
 ```
 ❯ tempura -i input.json -t template.txt
 Hello John,
@@ -73,6 +79,37 @@ Good
 ❯ cat ./output.txt
 Hello John,
 Good
+```
+
+### use Actions
+https://golang.org/pkg/text/template/#hdr-Actions
+
+#### input
+`input.json`
+```json
+{
+  "isTrue": true,
+  "Cat": "cat"
+}
+```
+
+`template.txt`
+```
+{{if .isTrue}}isTrue is True!{{end}}
+
+{{if .isFalse}}never{{else}}isFalse is False!{{end}}
+
+{{if eq .Cat "cat"}}Cat: nyan{{end}}
+```
+
+#### output
+```
+❯ tempura
+isTrue is True!
+
+isFalse is False!
+
+Cat: nyan
 ```
 
 ### Options
