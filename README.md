@@ -1,5 +1,5 @@
 # tempura
-A Fast and Flexible Template Fill Tool.
+A Fast and Flexible Template Fill CLI Tool.
 
 [![](https://img.shields.io/badge/docker-ghcr.io%2Fkorosuke613%2Ftempura-blue)](https://github.com/users/korosuke613/packages/container/package/tempura) [![](https://img.shields.io/github/v/release/korosuke613/tempura)](https://github.com/korosuke613/tempura/releases) ![](https://img.shields.io/github/go-mod/go-version/korosuke613/tempura) 
 
@@ -19,7 +19,7 @@ go install github.com/korosuke613/tempura@latest
 docker pull ghcr.io/korosuke613/tempura
 ```
 
-### binary
+### manual
 Download from [Releases](https://github.com/korosuke613/tempura/releases).
 
 ## Getting Started
@@ -115,7 +115,7 @@ Cat: nyan
 ### Options
 ```
 ❯ tempura -h
-A Fast and Flexible Template Fill Generator built with love by korosuke613 in Go.
+A Fast and Flexible Template Fill CLI Tool built with love by korosuke613 in Go.
 
 Usage:
   tempura [flags]
