@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/korosuke613/tempura/lib"
-	"github.com/spf13/cobra"
 	"os"
 	"runtime/debug"
+
+	"github.com/korosuke613/tempura/lib"
+	"github.com/spf13/cobra"
 )
 
 var (
@@ -50,8 +51,8 @@ func newRootCmd() *cobra.Command {
 				}
 			}
 
-			var output string
-			if err := t.Fill(&output); err != nil {
+			output, err := t.Fill()
+			if err != nil {
 				return err
 			}
 
@@ -89,7 +90,7 @@ func printVersion() {
 		info, ok := debug.ReadBuildInfo()
 		if ok {
 			trueVersion = info.Main.Version
-		}else{
+		} else {
 			trueVersion = "(devel)"
 		}
 	}

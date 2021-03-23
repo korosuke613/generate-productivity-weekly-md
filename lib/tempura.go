@@ -56,18 +56,16 @@ func (t *Tempura) getTemplate() (*template.Template, error) {
 	return nil, errors.New("you should set template")
 }
 
-func (t *Tempura) Fill(output *string) error {
+func (t *Tempura) Fill() (string, error) {
 	temp, err := t.getTemplate()
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	var b bytes.Buffer
 	if err := temp.Execute(&b, t.Input); err != nil {
-		return err
+		return "", err
 	}
 
-	*output = b.String()
-
-	return nil
+	return b.String(), nil
 }
